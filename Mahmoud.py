@@ -4,6 +4,14 @@ for i in 6:
     dfclndfkvmdf
 
 
+var = 123
+
+var + 1
+
+
+
+
+
 
 
 
