@@ -7,6 +7,8 @@ for i in 6:
 var = 123
 
 var + 1
+x = 12
+
 
 
 
