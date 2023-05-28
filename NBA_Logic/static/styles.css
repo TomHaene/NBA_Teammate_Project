@@ -1,4 +1,111 @@
 *{
-    color:blue;
-    background-color: lavender;
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    /* outline: 1px solid hotpink; */
+
 }
+
+html{
+    font-size: 62.5%;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+}
+
+
+
+.nav{
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    position: fixed;
+    z-index: 999;
+    background-color: rgb(0,112,51);
+    width: 100%;
+    opacity: 0.9;
+}
+
+.title{
+    margin-inline: auto;
+    font-size: 2rem;
+    text-transform: capitalize;
+    letter-spacing: 0.3px;
+}
+.navbar-menu {
+    position: relative;
+  }
+  
+  .menu-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+
+
+  
+  .menu-items {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    display: none;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    background-color: #f1f1f1;
+  }
+  
+  .menu-items li {
+    padding: 10px;
+  }
+  
+  .menu-items li a {
+    text-decoration: none;
+    color: #333;
+  }
+  
+  .navbar-menu:hover .menu-items {
+    display: block;
+  }
+
+
+
+
+
+
+
+
+.beforeinput{
+    background-image: url("CelticsBanners.jpg");
+    background-size: cover;
+
+    background-position: bottom center;
+    background-repeat: no-repeat;
+    height:100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+.beforeinput form{
+    width: 100%;
+    max-width: 700px;
+    background: rgba(255,255,255,0.2);
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    border-radius: 1px;
+}
+
+
+.beforeinput input{
+    background: transparent;
+    padding: 24px 20px;
+    width: 950%;
+}
+
+
+
+
+
+

@@ -7,7 +7,5 @@ import Mahmoud
 
 
 def home(request):
-    number = Mahmoud.random()
-    context = {'random_number': number}
     
-    return render(request, 'index.html', context)
+    return render(request, 'index.html')
