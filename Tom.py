@@ -7,7 +7,7 @@ from nba_api.stats.library.parameters import SeasonAll
 
 
 
-def main(name):
+def setup(name):
     playerName = name
     #boom, okay so now we have access to the given player in my algorithm 
     #now do some input validation

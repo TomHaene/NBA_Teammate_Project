@@ -2,64 +2,52 @@
 <html lang="en">
 
 <head>
-    {% load static %}
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NBA project</title>
 </head>
 <body>
-
-    
    
     <div class="beforeinput">
-        <form action="{% url 'home' %}" method="post">{% csrf_token %}
-
-            
+        <form action="{% url 'returnResults' %}" method="post"> 
+          {% csrf_token %}
             <input type="text" placeholder="Enter any NBA player....." name="PlayerName">
+
             <button type="submit">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <circle cx="11" cy="11" r="8" />
                     <line x1="21" y1="21" x2="16.65" y2="16.65" />
                   </svg>
                   
-            </button>
-
+          </a>
 
         </form>
     </div>
 
-    <div class="afterinput">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi reiciendis consectetur itaque quam. Nulla quasi commodi voluptates id mollitia, nam maiores recusandae ducimus veritatis, odit tempore impedit quisquam sunt facere?
-
-    </div>
-
-
-
+    
 
 </body>
 
 <style>
-    
-*{
+  
+  *{
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
     /* outline: 1px solid hotpink;  */
-  
-  }
-  
-  html{
+
+}
+
+html{
     font-size: 62.5%;
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
-  }
-  
-  
-  .beforeinput {
+}
+.beforeinput {
   position: relative;
-  }
-  
-  .beforeinput::before {
+}
+
+.beforeinput::before {
   content: "";
   position: absolute;
   top: 0;
@@ -67,11 +55,11 @@
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.2); /* Adjust the opacity as desired */
-  }
-  
-  /* Rest of your existing styles */
-  .beforeinput {
-  background-image: url("../static/CelticsBanners.jpg");
+}
+
+/* Rest of your existing styles */
+.beforeinput {
+  background-color: aquamarine;
   background-size: 100vw 100vh;
   background-position: bottom center;
   background-repeat: no-repeat;
@@ -79,15 +67,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  }
-  
-  
-  
-  
-  
-  
-  
-  .beforeinput form{
+}
+
+
+.beforeinput form{
     width: 100%;
     max-width: 700px;
     background: rgba(255,255,255,0.7);
@@ -96,28 +79,25 @@
     padding: 10px 20px;
     border-radius: 20px;
     z-index: 1 ;
-  }
-  
-  .beforeinput input{
+}
+
+.beforeinput input{
     background: transparent;
     padding: 24px 20px;
     width: 950%;
     font-size: 2rem;
     color:black;
-  }
-  
-  
-  ::placeholder{
+}
+
+::placeholder{
   color: black;
   font-size: 2rem;
   letter-spacing: 0.3px;
-  
-  }
-  
-  
-  
-  
-  .beforeinput button{
+
+}
+
+
+.beforeinput button{
   background-color: lightgreen;
   border-radius: 50%;
   cursor: pointer;
@@ -125,27 +105,21 @@
   height: 60px;
   border: 0;
   margin-left: 4px;
-  }
-  
-  .beforeinput svg{
+}
+
+.beforeinput svg{
   width: 60px;
   padding: 6px; 
-  }
-  
-  
-  
-  
-  .afterinput{
-  display: none;
-  height: 500px;
-  }
-  
-  
+}
+
+
+
   
 
-        
 </style>
-
+<script>
+ 
+</script>
 
 
 

@@ -29,7 +29,7 @@
   
   /* Rest of your existing styles */
   .beforeinput {
-  background-image: url("CelticsBanners.jpg");
+  background-color: aquamarine;
   background-size: 100vw 100vh;
   background-position: bottom center;
   background-repeat: no-repeat;
@@ -93,7 +93,7 @@
   
   
   
-  .afterinput{
+  .results{
   display: none;
   height: 500px;
   }
