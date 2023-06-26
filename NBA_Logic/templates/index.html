@@ -13,17 +13,91 @@
 <body>
 
     <div class="nav">
-        <div class="how-it-works">How does this work?</div>
+
+
+        <div class="how-it-works" data-bs-toggle="modal" data-bs-target="#exampleModal">How does this work?</div>
+
+
     
 
     </div>
+
+
+      
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModal" tabindex="-1"  aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+        <div class="modal-dialog">
+
+          <div class="modal-content">
+
+            <div class="modal-header">
+
+              <h5 class="modal-title" id="exampleModalLabel">How this project works:</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+
+            <div class="modal-body">
+                <ul>
+                    <li>
+                        This application is centered around comparing whether a given NBA player is a better regular-season, or post-season performer.
+                    </li>
+
+                    <li>
+                        <u>Input</u>: An NBA players name
+                    </li>
+
+                    <li>
+                        <u>Output</u>: Graphs and charts that compare regular season vs post-season aggregate stats for that given player. To give you a good idea on whether they show up more or less when it really counts.
+                    </li>
+
+                    <li> Also note that this program won't work if your player falls in one or more of the following categories:
+
+                        <ul>
+                            <li> Retired NBA players</li>
+                            <li> NBA players who have not played any playoff games in their career yet, eg: rookies</li>
+                            <li>Non-NBA players obviously, so don't even think of trying yourself</li>
+                        </ul>
+                    </li>
+
+                    <li>The idea for this project came when me and Mahmoud were watching the 2023 NBA playoffs and noticed how some players, like Jimmy Butler just seem to step their game up to new heights once the playoffs come around. We then became curious on which other players might follow this trend, and which players get 'worse' during the playoffs.</li>
+                    
+
+
+
+                </ul>
+
+
+              <!-- <p>The purpose of this application is centered around 
+                The program takes in a single input: An NBA player's name, and will output a collection of graphs and charts that will give you an indication into how their performance differs.
+            
+            
+            </p> -->
+            </div>
+
+
+    
+          </div>
+
+        </div>
+        
+
+
+      </div>
+
+
    
     <div class="beforeinput">
 
 
         <div class="welcome-header">Welcome to our project!</div>
 
+        
+
         <div class="welcome-subtext">
+            Feel free to enter a current NBA player into the field below
             
         </div>
 
@@ -154,7 +228,7 @@ height: 80vh;
     position: absolute;
     left: 50%;
     top: 50%;
-    transform: translate(-50%);
+    transform: translate(-50%,-30%);
 
 }
 
@@ -199,6 +273,43 @@ height: 80vh;
     margin-inline: auto;
 
 }
+
+.welcome-subtext{
+    margin-inline: auto;
+    font-size: 3rem;
+    width: fit-content;
+}
+
+.how-it-works{
+    cursor: pointer;
+
+}
+
+.how-it-works:hover{
+    color:black;
+    text-decoration: underline;
+    
+}
+
+.modal-dialog {
+        max-width: 50vw; /* Set the desired maximum width for the modal */
+    }
+
+
+
+.modal-title {
+    font-size: 3.5rem;
+  }
+  
+.modal-body{
+    font-size: 2.2rem;
+}
+
+
+.modal-body p{
+    line-height: 21px;
+}
+
 
 
 
