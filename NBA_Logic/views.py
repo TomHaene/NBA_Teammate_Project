@@ -8,7 +8,6 @@ import Tom
 def index(request):
     
 
-
     return render(request,"index.html")
 
 
@@ -22,4 +21,10 @@ def returnResults(request):
         # return the data from the business logic and then display this on the SAME HTML page as the input bar,
         # but in a section below it. Also it will bring the user down to this section with a smooth animation
 
-    return render(request, "results.html", {'name':'Marcus Smart'})
+    return render(request, "results.html", {'name':nbaPlayerName})
+
+
+def goBack(request):
+    
+
+    return render(request,"index.html")
