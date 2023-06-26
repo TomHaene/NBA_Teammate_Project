@@ -96,11 +96,20 @@
   
   <body>
 
+    <div class="nav">
+      <a href="{% url 'goBack' %}"><img src="../static/left-arrow.png" alt="" class="back-button"></a>
+      <div class="how-it-works">NBA Comparison Project</div>
+      
+  
+    </div>
+
+    <div class="main">
       <div class="results-header"> comparison data for {{ name }}:</div>
 
-      <a href="{% url 'goBack' %}"><img src="../static/left-arrow.png" alt="" class="back-button"></a>
+    </div>
 
 
+  
       <!-- <div class="container charts">
         <div id="chart1" style="width: 50%; height: 400px" class="chart1"></div>
         <div id="chart2" style="width: 50%; height: 400px" class="chart1"></div>
@@ -110,9 +119,13 @@
 
       
 
-      
+  
 
+      <div class="footer">
+        <div class="footer-text">Project brought to you buy Thomas Haene and Mahmoud Amin</div>
 
+    </div>
+  
     
 
     
@@ -127,25 +140,29 @@
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
-    /* outline: 1px solid hotpink;  */                                
+    /* outline: 1px solid hotpink;                                  */
   }
 
   body{
     font-family: 'Basketball', sans-serif;
     font-size: 62.5%;
     background-color: #f5f2ec;
-  height: 2000px;
+
   }
 
   @import url('https://fonts.cdnfonts.com/css/basketball');
   
   .results-header{
     width: fit-content;
-    margin-top: 30px;
+    
     margin-inline: auto;
     font-size: 2.7rem;
   }
 
+  .main{
+    height: 1000px;
+    padding-top: 20px;
+  }
 
   .court-container{
     display: flex;
@@ -158,8 +175,9 @@
   .back-button{
     width: 50px;
     position: absolute;
-    top: 40px;
-    left: 20px;
+    left: 40px;
+    top:10px;
+
   }
 
 
@@ -171,6 +189,39 @@
   .charts>*{
     margin-inline: 20px;
   }
+
+
+  .nav{
+    height: 10vh;
+    background-color: #005864;
+    display: flex;
+    justify-content: center;
+
+    align-items: center;
+
+}
+
+
+.nav>*{
+    color: white;
+    font-size: 1.8rem;
+ 
+}
+
+.footer{
+    height: 10vh;
+    background-color: #005864;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.footer>*{
+    color: white;
+    font-size: 1.5rem;
+    
+}
 
   
 
