@@ -6,82 +6,10 @@
     <title>Returned data</title>
 
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript">
-      google.charts.load('current', {'packages':['bar']});
-      google.charts.setOnLoadCallback(drawCharts);
+  
 
-      function drawCharts() {
-        // Call the functions to draw individual charts
-        drawChart1();
-        drawChart2();
-        drawChart3();
-      }
-
-      function drawChart1() {
-        var data = google.visualization.arrayToDataTable([
-          ['Year', 'Regular season', 'Playoffs'],
-          ['FG%', 1000, 400],
-          ['Points per 36', 1170, 460],
-          ['2016', 660, 1120]
-       
-        ]);
-
-        var options = {
-          chart: {
-            title: "{{ name }} offensive comparison anlysis",
-            subtitle: 'A comparison of this players offensive performance',
-          },
-          bars: 'vertical' // Required for Material Bar Charts.
-        };
-
-        var chart = new google.charts.Bar(document.getElementById('chart1'));
-
-        chart.draw(data, google.charts.Bar.convertOptions(options));
-      }
-
-      function drawChart2() {
-        var data = google.visualization.arrayToDataTable([
-          ['Year', 'Regular season', 'Playoffs'],
-          ['FG%', 1000, 400],
-          ['Points per 36', 1170, 460],
-          ['2016', 660, 1120],
       
-        ]);
-
-        var options = {
-          chart: {
-            title: "{{ name }} defensive comparison anlysis",
-            subtitle: 'A comparison of this players offensive performance',
-          },
-          bars: 'vertical' // Required for Material Bar Charts.
-        };
-
-        var chart = new google.charts.Bar(document.getElementById('chart2'));
-
-        chart.draw(data, google.charts.Bar.convertOptions(options));
-      }
-      function drawChart3() {
-        var data = google.visualization.arrayToDataTable([
-          ['Year', 'Regular season', 'Playoffs'],
-          ['FG%', 1000, 400],
-          ['Points per 36', 1170, 460],
-          ['2016', 660, 1120],
-      
-        ]);
-
-        var options = {
-          chart: {
-            title: '{{ name }} comparison anlysis',
-            subtitle: 'A comparison of this players offensive performance',
-          },
-          bars: 'vertical' // Required for Material Bar Charts.
-        };
-
-        var chart = new google.charts.Bar(document.getElementById('chart3'));
-
-        chart.draw(data, google.charts.Bar.convertOptions(options));
-      }
-    </script>
+    
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <link href="https://fonts.cdnfonts.com/css/basketball" rel="stylesheet">
@@ -90,47 +18,116 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
+<script> //This will be my own custom JS for my graphs
 
+
+</script>
 
   </head>
   
   <body>
 
     <div class="nav">
-      <a href="{% url 'goBack' %}"><img src="../static/left-arrow.png" alt="" class="back-button"></a>
+      <a href="{% url 'goBack' %}"><img src="../static/left-arrow.png" alt="Back Arrow Button" class="back-button"></a>
       <div class="how-it-works">NBA Comparison Project</div>
       
   
     </div>
 
+
     <div class="main">
       <div class="results-header"> comparison data for {{ name }}:</div>
+    
+      <div class="canvas_container">
+        <canvas id="myChart">
+
+        </canvas>
+  
+      </div>
+
+      
 
     </div>
 
 
-  
-      <!-- <div class="container charts">
-        <div id="chart1" style="width: 50%; height: 400px" class="chart1"></div>
-        <div id="chart2" style="width: 50%; height: 400px" class="chart1"></div>
-
-
-      </div> -->
-
-      
-
-  
 
       <div class="footer">
         <div class="footer-text">Project brought to you buy Thomas Haene and Mahmoud Amin</div>
 
-    </div>
+      </div>
+
+
+      <span id="regfg" data-value="{{ data.regfg }}" style="display: none;"></span>
+      <span id="playoffsfg" data-value="{{ data.playoffsfg }}" style="display: none;"></span>
+
+
+      <span id="reg3fg" data-value="{{ data.reg3fg }}" style="display: none;"></span>
+      <span id="playoffs3fg" data-value="{{ data.playoffs3fg }}" style="display: none;"></span>
+
+      <span id="regfreethrow" data-value="{{ data.regfreethrow }}" style="display: none;"></span>
+      <span id="playoffsfreethrow" data-value="{{ data.playoffsfreethrow }}" style="display: none;"></span>
   
     
 
+  
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+    <script>
+      const ctx = document.getElementById('myChart');
+
     
+      const regfg = document.getElementById('regfg').getAttribute('data-value');
+      const playoffsfg = document.getElementById('playoffsfg').getAttribute('data-value');
+
+      const reg3fg = document.getElementById('reg3fg').getAttribute('data-value');
+      const playoffs3fg = document.getElementById('playoffs3fg').getAttribute('data-value');
+
+      const regfreethrow = document.getElementById('regfreethrow').getAttribute('data-value');
+      const playoffsfreethrow = document.getElementById('playoffsfreethrow').getAttribute('data-value');
 
 
+      new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: ['Field goal %', '3 point %', 'Free throw %'],
+          datasets: [
+            {
+            label: 'Regular season',
+            data: [regfg, reg3fg, regfreethrow],
+            backgroundColor: [
+
+
+
+            ],
+            borderWidth: 1
+          },
+          {
+            label: 'Playoffs',
+            data: [playoffsfg, playoffs3fg, playoffsfreethrow],
+            backgroundColor: [
+
+
+
+            ],
+            borderWidth: 1
+          },
+        
+        
+        
+        ]
+        },
+        options: {
+          responsive: true,
+          scales: {
+            y: {
+              beginAtZero: true
+            }
+          }
+        }
+      });
+
+
+    </script>
   </body>
 
 
@@ -180,16 +177,7 @@
 
   }
 
-
-  .charts{
-    display: flex;
-    margin-top: 60px;
-  }
-
-  .charts>*{
-    margin-inline: 20px;
-  }
-
+  
 
   .nav{
     height: 10vh;
@@ -207,6 +195,20 @@
     font-size: 1.8rem;
  
 }
+
+
+
+.canvas_container{
+  width: 50%;
+  margin-top: 30px;
+  margin-left: 10px;
+}
+
+
+
+
+
+
 
 .footer{
     height: 10vh;
