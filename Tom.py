@@ -58,6 +58,44 @@ def setup(name):
 
 
 
+def RegularSeasonGamesPlayed(playerID):
+    careerStats = playercareerstats.PlayerCareerStats(player_id = playerID)
+    career_stats_data = careerStats.get_data_frames()[0]
+    regularSeasonTotalsDataSet = careerStats.career_totals_regular_season
+    regularDFBron = regularSeasonTotalsDataSet.get_data_frame()
+    if (regularDFBron.empty):
+        print("No regular season games played")
+        return 0
+    regularFGBron = regularDFBron['GP']
+    GPregular = regularFGBron.item()
+    return GPregular
+
+
+
+
+def PlayoffGamesPlayed(playerID):
+    careerStats = playercareerstats.PlayerCareerStats(player_id = playerID)
+    career_stats_data = careerStats.get_data_frames()[0]
+    playoffsTotalsDataSet = careerStats.career_totals_post_season
+    playoffsDFBron = playoffsTotalsDataSet.get_data_frame()
+    if (playoffsDFBron.empty):
+        print("No playoff games played")
+        return 0
+    playoffsFGBron = playoffsDFBron['GP']
+     
+    GPPlayoffs = playoffsFGBron.item()
+    
+
+    print(GPPlayoffs)
+
+
+    return GPPlayoffs
+
+ 
+
+
+
+
 
 
 def RegularFG(playerID):

@@ -37,13 +37,41 @@
 
     <div class="main">
       <div class="results-header"> comparison data for {{ name }}:</div>
-    
-      <div class="canvas_container">
-        <canvas id="myChart">
 
-        </canvas>
-  
+      <div class="games-played">
+        {{ name }} has played <span style="color: #005864; font-weight: bold; font-size: larger;">{{ reggames }}</span> regular season games in his NBA career and <span style="color: #005864; font-weight: bold; font-size: larger;">{{ playoffgames}}</span>  playoff games in his NBA career
       </div>
+
+
+      <div class="shooting-container">
+        <div class="canvas-container-offense">
+          <canvas id="shootingChart">
+          </canvas>
+        </div>
+  
+        <div class="explaination">
+          <ul>
+            <li>The bar graph to the left shows the shooting % differences for {{ name }} in the regular season vs the playoffs. These numbers are taken as career averages, and hence note that it's logical that the longer a player spends in the league, the more representative the comparison becomes</li>
+            <li>You'll find that the general trend seems to be that shooting percentages decrease in all of these categories once the playoffs hit. This is normal, as the playoffs bring increased pressure, tighter defense and higher stakes.</li>
+          </ul>
+          
+        </div>
+
+      </div>
+      <div class="defense-container" style="margin-top: 20px;">
+        <div class="explaination">
+          <ul>
+            <li>The bar graph to the right shows the advanced stats for {{ name }} in the regular season vs the playoffs. These numbers are taken as career averages, and hence note that it's logical that the longer a player spends in the league, the more representative the comparison becomes</li>
+            <li>You'll find that the general trend seems to be.... </li>
+          </ul>
+          
+        </div>
+        <div class="canvas-container-defense">
+          <canvas id="defenseChart">
+          </canvas>
+        </div>
+    
+     
 
       
 
@@ -73,7 +101,8 @@
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
     <script>
-      const ctx = document.getElementById('myChart');
+      const ctx = document.getElementById('shootingChart');
+      const ctx2 = document.getElementById('defenseChart');
 
     
       const regfg = document.getElementById('regfg').getAttribute('data-value');
@@ -85,11 +114,49 @@
       const regfreethrow = document.getElementById('regfreethrow').getAttribute('data-value');
       const playoffsfreethrow = document.getElementById('playoffsfreethrow').getAttribute('data-value');
 
-
       new Chart(ctx, {
         type: 'bar',
         data: {
           labels: ['Field goal %', '3 point %', 'Free throw %'],
+          datasets: [
+            {
+            label: 'Regular season',
+            data: [regfg, reg3fg, regfreethrow],
+            backgroundColor: [
+
+
+
+            ],
+            borderWidth: 1
+          },
+          {
+            label: 'Playoffs',
+            data: [playoffsfg, playoffs3fg, playoffsfreethrow],
+            backgroundColor: [
+
+
+
+            ],
+            borderWidth: 1
+          },
+        
+        
+        
+        ]
+        },
+        options: {
+          responsive: true,
+          scales: {
+            y: {
+              beginAtZero: true
+            }
+          }
+        }
+      });
+      new Chart(ctx2, {
+        type: 'bar',
+        data: {
+          labels: ['Plus-Minus', 'PER', 'USG'],
           datasets: [
             {
             label: 'Regular season',
@@ -137,13 +204,14 @@
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
-    /* outline: 1px solid hotpink;                                  */
+    outline: 1px solid hotpink;                                 
   }
 
   body{
     font-family: 'Basketball', sans-serif;
     font-size: 62.5%;
     background-color: #f5f2ec;
+    
 
   }
 
@@ -154,11 +222,20 @@
     
     margin-inline: auto;
     font-size: 2.7rem;
+    margin-bottom: 10px;
+  }
+
+  .games-played{
+    width: fit-content;
+    margin-inline: auto;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
   }
 
   .main{
     height: 1000px;
     padding-top: 20px;
+    font-size: 1rem;
   }
 
   .court-container{
@@ -198,11 +275,34 @@
 
 
 
-.canvas_container{
-  width: 50%;
-  margin-top: 30px;
-  margin-left: 10px;
+.shooting-container{
+  display: flex;
+
 }
+
+.defense-container{
+  display: flex;
+}
+
+
+
+.canvas-container-offense{
+  width: 50%;
+  margin-top: 10px;
+  margin-left: 35px;
+}
+.canvas-container-defense{
+  width: 50%;
+  margin-top: 10px;
+  margin-right: 35px;
+}
+
+
+.explaination{
+  padding:50px;
+  font-size: 1.5rem;
+}
+
 
 
 

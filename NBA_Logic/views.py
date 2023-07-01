@@ -21,7 +21,21 @@ def returnResults(request):
         ID = Tom.setup(nbaPlayerName)
 
 
+
+
+
         if (ID != "invalid"):
+            reggames = Tom.RegularSeasonGamesPlayed(ID)
+            playoffgames = Tom.PlayoffGamesPlayed(ID)
+
+            if(playoffgames == 0):
+                # If the player has played zero playoff games, so only has regular season games
+                return render(request,"index.html")
+                
+        
+
+            
+            
             regularSeasonFG = Tom.RegularFG(ID)
             playoffsFG = Tom.PlayoffsFG(ID)
 
@@ -31,6 +45,9 @@ def returnResults(request):
             regularSeasonFreeThrow = Tom.RegularFreeThrow(ID)
             playoffsFreeThrow = Tom.PlayoffsFreeThrow(ID)
 
+
+            
+
             data = {
             'regfg': regularSeasonFG,
             'playoffsfg': playoffsFG,
@@ -39,7 +56,7 @@ def returnResults(request):
             'regfreethrow' : regularSeasonFreeThrow,
             'playoffsfreethrow' : playoffsFreeThrow,
             }
-            return render(request, "results.html", {'name':nbaPlayerName, 'data':data})
+            return render(request, "results.html", {'name':nbaPlayerName, 'data':data, 'reggames':reggames, 'playoffgames':playoffgames})
 
 
          
