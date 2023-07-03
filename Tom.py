@@ -8,9 +8,24 @@ from nba_api.stats.library.parameters import SeasonAll
 from nba_api.stats.endpoints import playercareerstats
 
 
+def getAllPlayersList():
+    all_players_dict = players.get_players()
+    nba_players_df = pd.DataFrame(all_players_dict)
+    firstLast_df = nba_players_df['full_name']
+    firstLast_list = firstLast_df.tolist()
+    return firstLast_list
+
+
+
 
 def setup(name):
-    playerName = name
+    print(name)
+    playerName = name.title()
+    print(playerName)
+
+    if(playerName == "Lebron James"):
+        playerName = "LeBron James"
+    
     #boom, okay so now we have access to the given player in my algorithm 
     #now do some input validation
     all_players_dict = players.get_players()
@@ -21,8 +36,6 @@ def setup(name):
     everyPlayerIDandName = {}
 
     everyPlayerName = everyPlayerIDandName.values()
-
-
 
     #start of input validation-----------------------------------
 
@@ -91,10 +104,41 @@ def PlayoffGamesPlayed(playerID):
 
     return GPPlayoffs
 
- 
+
+def seasonsMadePlayoffs(playerID):
+     # Create an instance of the PlayerCareerStats endpoint
+    player_stats = playercareerstats.PlayerCareerStats(player_id=playerID)
+
+    # Retrieve the player's career stats data
+    career_stats = player_stats.get_data_frames()[0]
+
+    # Filter the career stats data to get the seasons where the player played in the playoffs
+    playoff_seasons = career_stats[career_stats['SEASON_TYPE'] == 'Playoffs']['SEASON_ID']
+
+    # Print the list of playoff seasons
+    print(playoff_seasons)
+
+    return playoff_seasons
 
 
 
+
+def seasonsPlayedOverall(playerID):
+    
+    # Create an instance of the PlayerCareerStats endpoint
+    player_stats = playercareerstats.PlayerCareerStats(player_id=playerID)
+
+    # Retrieve the player's career stats data
+    career_stats = player_stats.get_data_frames()[0]
+
+    # Filter the career stats data to get the seasons where the player played in the playoffs
+
+
+    seasons = career_stats[career_stats['PTS'] > 0]['SEASON_ID']
+
+    # Print the list of playoff seasons
+    print(seasons)
+    return seasons
 
 
 
@@ -107,9 +151,6 @@ def RegularFG(playerID):
     FGregularSeason = regularFGBron.item()
     print (FGregularSeason)
     return FGregularSeason
-
-
-
 
 
 def PlayoffsFG(playerID):
@@ -181,6 +222,117 @@ def PlayoffsFreeThrow(playerID):
 
 
 
+def regularShotChartSeasonal(playerID, season):
+    shot_chart = ShotChartDetail(player_id = playerID, team_id=0, season_nullable=season, context_measure_simple = 'FGA', season_type_all_star = 'Regular Season')
+    shot_data = shot_chart.get_data_frames()[0]
+    return shot_data
+
+
+
+# We're gonna want to call the above function for all the times that the given player made the playoffs.
+# Since we can only obtain the shot data on a seasonal basis
+
+
+
+def playoffsShotChartSeasonal(playerID, season):
+    shot_chart = ShotChartDetail(player_id = playerID, team_id=0, season_nullable=season, context_measure_simple = 'FGA', season_type_all_star = 'Playoffs')
+    shot_data = shot_chart.get_data_frames()[0]
+    return shot_data
+    
+
+
+def regularTotalPoints(playerID):
+    careerStats = playercareerstats.PlayerCareerStats(player_id = playerID)
+    career_stats_data = careerStats.get_data_frames()[0]
+    playoffsTotalsDataSet = careerStats.career_totals_regular_season
+    playoffsDFBron = playoffsTotalsDataSet.get_data_frame()
+    playoffsFGBron = playoffsDFBron['PTS']
+    threeFGplayoffs = playoffsFGBron.item()
+    print (threeFGplayoffs)
+    return threeFGplayoffs
+
+
+def playoffsTotalPoints(playerID):
+    careerStats = playercareerstats.PlayerCareerStats(player_id = playerID)
+    career_stats_data = careerStats.get_data_frames()[0]
+    playoffsTotalsDataSet = careerStats.career_totals_post_season
+    playoffsDFBron = playoffsTotalsDataSet.get_data_frame()
+    playoffsFGBron = playoffsDFBron['PTS']
+    threeFGplayoffs = playoffsFGBron.item()
+    print (threeFGplayoffs)
+
+    return threeFGplayoffs
+
+
+
+
+def regularTotalAssists(playerID):
+    careerStats = playercareerstats.PlayerCareerStats(player_id = playerID)
+    career_stats_data = careerStats.get_data_frames()[0]
+    playoffsTotalsDataSet = careerStats.career_totals_regular_season
+    playoffsDFBron = playoffsTotalsDataSet.get_data_frame()
+    playoffsFGBron = playoffsDFBron['AST']
+    threeFGplayoffs = playoffsFGBron.item()
+    print (threeFGplayoffs)
+    return threeFGplayoffs
+
+
+def playoffsTotalAssists(playerID):
+    careerStats = playercareerstats.PlayerCareerStats(player_id = playerID)
+    career_stats_data = careerStats.get_data_frames()[0]
+    playoffsTotalsDataSet = careerStats.career_totals_post_season
+    playoffsDFBron = playoffsTotalsDataSet.get_data_frame()
+    playoffsFGBron = playoffsDFBron['AST']
+    threeFGplayoffs = playoffsFGBron.item()
+    print (threeFGplayoffs)
+
+    return threeFGplayoffs
+
+
+def regularTotalRebounds(playerID):
+    careerStats = playercareerstats.PlayerCareerStats(player_id = playerID)
+    career_stats_data = careerStats.get_data_frames()[0]
+    playoffsTotalsDataSet = careerStats.career_totals_regular_season
+    playoffsDFBron = playoffsTotalsDataSet.get_data_frame()
+    playoffsFGBron = playoffsDFBron['REB']
+    threeFGplayoffs = playoffsFGBron.item()
+    print (threeFGplayoffs)
+    return threeFGplayoffs
+
+
+def playoffsTotalRebounds(playerID):
+    careerStats = playercareerstats.PlayerCareerStats(player_id = playerID)
+    career_stats_data = careerStats.get_data_frames()[0]
+    playoffsTotalsDataSet = careerStats.career_totals_post_season
+    playoffsDFBron = playoffsTotalsDataSet.get_data_frame()
+    playoffsFGBron = playoffsDFBron['REB']
+    threeFGplayoffs = playoffsFGBron.item()
+    print (threeFGplayoffs)
+
+    return threeFGplayoffs
+
+
+def regularTotalTurnovers(playerID):
+    careerStats = playercareerstats.PlayerCareerStats(player_id = playerID)
+    career_stats_data = careerStats.get_data_frames()[0]
+    playoffsTotalsDataSet = careerStats.career_totals_regular_season
+    playoffsDFBron = playoffsTotalsDataSet.get_data_frame()
+    playoffsFGBron = playoffsDFBron['TOV']
+    threeFGplayoffs = playoffsFGBron.item()
+    print (threeFGplayoffs)
+    return threeFGplayoffs
+
+
+def playoffsTotalTurnovers(playerID):
+    careerStats = playercareerstats.PlayerCareerStats(player_id = playerID)
+    career_stats_data = careerStats.get_data_frames()[0]
+    playoffsTotalsDataSet = careerStats.career_totals_post_season
+    playoffsDFBron = playoffsTotalsDataSet.get_data_frame()
+    playoffsFGBron = playoffsDFBron['TOV']
+    threeFGplayoffs = playoffsFGBron.item()
+    print (threeFGplayoffs)
+
+    return threeFGplayoffs
 
 
 
@@ -188,3 +340,72 @@ def PlayoffsFreeThrow(playerID):
 
 
 
+def regularTotalBlocks(playerID):
+    careerStats = playercareerstats.PlayerCareerStats(player_id = playerID)
+    career_stats_data = careerStats.get_data_frames()[0]
+    playoffsTotalsDataSet = careerStats.career_totals_regular_season
+    playoffsDFBron = playoffsTotalsDataSet.get_data_frame()
+    playoffsFGBron = playoffsDFBron['BLK']
+    threeFGplayoffs = playoffsFGBron.item()
+    print (threeFGplayoffs)
+    return threeFGplayoffs
+
+
+def playoffsTotalBlocks(playerID):
+    careerStats = playercareerstats.PlayerCareerStats(player_id = playerID)
+    career_stats_data = careerStats.get_data_frames()[0]
+    playoffsTotalsDataSet = careerStats.career_totals_post_season
+    playoffsDFBron = playoffsTotalsDataSet.get_data_frame()
+    playoffsFGBron = playoffsDFBron['BLK']
+    threeFGplayoffs = playoffsFGBron.item()
+    print (threeFGplayoffs)
+
+    return threeFGplayoffs
+
+
+
+def regularTotalSteals(playerID):
+    careerStats = playercareerstats.PlayerCareerStats(player_id = playerID)
+    career_stats_data = careerStats.get_data_frames()[0]
+    playoffsTotalsDataSet = careerStats.career_totals_regular_season
+    playoffsDFBron = playoffsTotalsDataSet.get_data_frame()
+    playoffsFGBron = playoffsDFBron['STL']
+    threeFGplayoffs = playoffsFGBron.item()
+    print (threeFGplayoffs)
+    return threeFGplayoffs
+
+
+def playoffsTotalSteals(playerID):
+    careerStats = playercareerstats.PlayerCareerStats(player_id = playerID)
+    career_stats_data = careerStats.get_data_frames()[0]
+    playoffsTotalsDataSet = careerStats.career_totals_post_season
+    playoffsDFBron = playoffsTotalsDataSet.get_data_frame()
+    playoffsFGBron = playoffsDFBron['STL']
+    threeFGplayoffs = playoffsFGBron.item()
+    print (threeFGplayoffs)
+
+    return threeFGplayoffs
+
+
+
+def regularTotalMinutes(playerID):
+    careerStats = playercareerstats.PlayerCareerStats(player_id = playerID)
+    career_stats_data = careerStats.get_data_frames()[0]
+    playoffsTotalsDataSet = careerStats.career_totals_regular_season
+    playoffsDFBron = playoffsTotalsDataSet.get_data_frame()
+    playoffsFGBron = playoffsDFBron['MIN']
+    threeFGplayoffs = playoffsFGBron.item()
+    print (threeFGplayoffs)
+    return threeFGplayoffs
+
+
+def playoffsTotalMinutes(playerID):
+    careerStats = playercareerstats.PlayerCareerStats(player_id = playerID)
+    career_stats_data = careerStats.get_data_frames()[0]
+    playoffsTotalsDataSet = careerStats.career_totals_post_season
+    playoffsDFBron = playoffsTotalsDataSet.get_data_frame()
+    playoffsFGBron = playoffsDFBron['MIN']
+    threeFGplayoffs = playoffsFGBron.item()
+    print (threeFGplayoffs)
+
+    return threeFGplayoffs
