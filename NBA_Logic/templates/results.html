@@ -46,10 +46,13 @@
 
 
       <div class="shooting-container">
+
+
         <div class="canvas-container-offense">
           <canvas id="shootingChart">
           </canvas>
         </div>
+
   
         <div class="explaination">
           <ul>
@@ -59,7 +62,17 @@
           
         </div>
 
+        <div class="explaination-mobile">
+          <ul>
+            <li>The bar graph above shows the offensive per game averages for {{ name }} in the regular season vs the playoffs.</li>
+            <li></li>
+          </ul>
+          
+        </div>
+
       </div>
+
+
 
       <!-- End of first item -->
 
@@ -67,7 +80,18 @@
        
         <div class="explaination">
           <ul>
-            <li>The bar graph to the right shows the offensive per game averages for {{ name }} in the regular season vs the playoffs.</li>
+            <li>The bar graph to the right shows the offensive per game averages for {{ name }} in the regular season vs the playoffs.
+
+            </li>
+            <li>
+              Note that the average tendancy is for points per game to decrease, while the trends for rebounds per game and assists per game are highly player dependent.
+              This is because in the playoffs there is much more isolation play. This leads to lower assits per game for role/bench players and a higher assits per game for the star players as they are the ones who will often kick it out and swing a pass to an open shooter out of isolation.
+        
+
+
+
+
+            </li>
             
           </ul>
           
@@ -78,40 +102,69 @@
           <canvas id="pergameChart">
           </canvas>
         </div>
+
+        <div class="explaination-mobile">
+          <ul>
+            <li>The bar graph above shows the offensive per game averages for {{ name }} in the regular season vs the playoffs.</li>
+            <li></li>
+          </ul>
+          
+        </div>
   
+        <!-- End of second item -->
+
 
       </div>
 
-      <div class="shooting-container">
-        <div class="canvas-container-offense">
+      <div class="extra-container">
+        <div class="canvas-container-extra">
           <canvas id="extraChart">
           </canvas>
         </div>
   
         <div class="explaination">
           <ul>
-            <li>The bar graph to the left shows the shooting % differences for {{ name }} in the regular season vs the playoffs. These numbers are taken as career averages, and hence note that it's logical that the longer a player spends in the league, the more representative the comparison becomes</li>
-            <li>You'll find that the general trend seems to be that shooting percentages decrease in all of these categories once the playoffs hit. This is normal, as the playoffs bring increased pressure, tighter defense and higher stakes.</li>
+            <li>The bar graph to the left shows some more per game averages for {{ name }} in the regular season vs the playoffs. </li>
+            <li>In general, turnovers per game increase for pretty much every player. This is because of the aforementioned heightened defensive intensity and stakes that come along with playoff basketball</li>
+            <li></li>
+          </ul>
+          
+        </div>
+
+        <div class="explaination-mobile">
+          <ul>
+            <li>The bar graph above shows the offensive per game averages for {{ name }} in the regular season vs the playoffs.</li>
+            <li></li>
           </ul>
           
         </div>
 
       </div>
 
-      <div class="pergame-container">
+      <div class="minutes-container">
        
         <div class="explaination">
           <ul>
-            <li>The bar graph to the right shows the offensive per game averages for {{ name }} in the regular season vs the playoffs.</li>
-            
+            <li>The bar graph to the right shows the minutes per game averages for {{ name }} in the regular season vs the playoffs.</li>
+            <li>This is a very important stat to consider when thinking of how a player's game translates to the post-season. You'll find that with most of the average, non-'star' players, their minutes decrease once the playoffs begin, whereas with all stars and key starters their minutes typically increase. Keep this in mind when looking at the per game averages</li>
           </ul>
           
         </div>
+
+  
 
         
         <div class="canvas-container-minutes">
           <canvas id="minutesChart">
           </canvas>
+        </div>
+
+        <div class="explaination-mobile">
+          <ul>
+            <li>The bar graph above shows the offensive per game averages for {{ name }} in the regular season vs the playoffs.</li>
+            <li></li>
+          </ul>
+          
         </div>
   
 
@@ -355,19 +408,18 @@
               
 
             ],
-            borderWidth: 1
+            borderWidth: 5,
+            barThickness: 90,
           },
           {
             label: 'Playoffs',
             data: [playoffsMPG],
             backgroundColor: [
-            
+  
              '#9F51C4'
-
-
-
             ],
-            borderWidth: 1
+            borderWidth: 5,
+            barThickness: 90,
           },
         
         
@@ -394,7 +446,7 @@
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
-    /* outline: 1px solid hotpink;                                  */
+    outline: 1px solid hotpink;                                 
   }
 
   body{
@@ -428,12 +480,8 @@
     font-size: 1rem;
   }
 
-  .court-container{
-    display: flex;
-    justify-content: space-around;
-    margin-top: 40px;
 
-  }
+
 
  
   .back-button{
@@ -475,32 +523,47 @@
   display: flex;
   border: 1px solid #005864;
 }
+.extra-container{
+  display: flex;
+  border: 1px solid #005864;
+}
+.minutes-container{
+  display: flex;
+  border: 1px solid #005864;
+}
 
 .shot-chart-container{
   height: 500px;
-
-
 }
 
 
 .canvas-container-offense{
-  width: 50%;
+  width: 55%;
+  margin-top: 10px;
+  margin-left: 35px;
+
+}
+
+.canvas-container-pergame{
+  width: 55%;
+  margin-top: 10px;
+  margin-right: 35px;
+}
+
+.canvas-container-extra{
+  width: 55%;
   margin-top: 10px;
   margin-left: 35px;
 }
 
-
-.canvas-container-pergame{
-  width: 60%;
-  margin-top: 10px;
-  margin-right: 25px;
-}
-
 .canvas-container-minutes{
   width: 40%;
-  margin-top: 10px;
-  margin-right: 25px;
+  margin-top: 20px;
+  margin-left: 35px;
 }
+
+
+
 .canvas-container-{
   width: 50%;
   margin-top: 10px;
@@ -510,8 +573,9 @@
 
 .explaination{
   padding:50px;
-  font-size: 1.5rem;
-  font-family: Arial, sans-serif ;
+  font-size: 1.2rem;
+  width: 50vw;
+  font-family: Georgia, Times, 'Times New Roman', serif;
 }
 
 
@@ -529,6 +593,82 @@
     font-size: 1.5rem;
     
 }
+
+.explaination-mobile{
+    display: none;
+  }
+
+  li{
+    margin-top: 5px;
+    margin-bottom: 10px;
+  }
+
+
+@media (max-width: 900px) {
+  /* CSS styles for screens below 768 pixels */
+  /* Add your styles here */
+
+  .results-header{
+    font-size: 2.5rem;
+  }
+
+
+  .games-played{
+    font-size: 1.4rem;
+    text-align: center;
+
+  }
+
+
+
+  .explaination{
+    display: none;
+  }
+
+
+  .explaination-mobile{
+    display: block;
+    padding:50px;
+    font-size: 1.2rem;
+    font-family: Georgia, Times, 'Times New Roman', serif;
+    width: 90vw;
+    margin: 0px;
+    margin-inline: auto;
+
+  }
+
+  
+
+
+
+  .shooting-container, .pergame-container, .extra-container, .minutes-container{
+    display: block;
+  }
+
+
+  .canvas-container-offense, .canvas-container-pergame, .canvas-container-extra, .canvas-container-minutes{
+    width: 90vw;
+    margin: 0px;
+    margin-inline: auto;
+  }
+
+  .explaination{
+    width: 90vw;
+    margin: 0px;
+    margin-inline: auto;
+
+  }
+
+
+  
+
+
+
+
+
+
+}
+
 
 
   </style>

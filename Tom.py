@@ -19,9 +19,9 @@ def getAllPlayersList():
 
 
 def setup(name):
-    print(name)
+  
     playerName = name.title()
-    print(playerName)
+  
 
     if(playerName == "Lebron James"):
         playerName = "LeBron James"
@@ -47,7 +47,7 @@ def setup(name):
 
 
     if (playerName not in everyPlayerName):
-        print("Invalid player")
+       
         return "invalid"
     
     #Also need to check for capitalization stuff eg: Lebron James = LeBron James = lebron james
@@ -65,7 +65,7 @@ def setup(name):
 
 
     playerID = playerDict["id"]
-    print(playerID)
+   
     return (playerID)
 
 
@@ -77,7 +77,7 @@ def RegularSeasonGamesPlayed(playerID):
     regularSeasonTotalsDataSet = careerStats.career_totals_regular_season
     regularDFBron = regularSeasonTotalsDataSet.get_data_frame()
     if (regularDFBron.empty):
-        print("No regular season games played")
+      
         return 0
     regularFGBron = regularDFBron['GP']
     GPregular = regularFGBron.item()
@@ -92,15 +92,14 @@ def PlayoffGamesPlayed(playerID):
     playoffsTotalsDataSet = careerStats.career_totals_post_season
     playoffsDFBron = playoffsTotalsDataSet.get_data_frame()
     if (playoffsDFBron.empty):
-        print("No playoff games played")
+    
         return 0
     playoffsFGBron = playoffsDFBron['GP']
      
     GPPlayoffs = playoffsFGBron.item()
-    
 
     print(GPPlayoffs)
-
+ 
 
     return GPPlayoffs
 
@@ -116,7 +115,7 @@ def seasonsMadePlayoffs(playerID):
     playoff_seasons = career_stats[career_stats['SEASON_TYPE'] == 'Playoffs']['SEASON_ID']
 
     # Print the list of playoff seasons
-    print(playoff_seasons)
+    
 
     return playoff_seasons
 
@@ -137,7 +136,7 @@ def seasonsPlayedOverall(playerID):
     seasons = career_stats[career_stats['PTS'] > 0]['SEASON_ID']
 
     # Print the list of playoff seasons
-    print(seasons)
+   
     return seasons
 
 
@@ -149,7 +148,7 @@ def RegularFG(playerID):
     regularDFBron = regularSeasonTotalsDataSet.get_data_frame()
     regularFGBron = regularDFBron['FG_PCT']
     FGregularSeason = regularFGBron.item()
-    print (FGregularSeason)
+  
     return FGregularSeason
 
 
@@ -160,7 +159,7 @@ def PlayoffsFG(playerID):
     playoffsDFBron = playoffsTotalsDataSet.get_data_frame()
     playoffsFGBron = playoffsDFBron['FG_PCT']
     FGplayoffs = playoffsFGBron.item()
-    print (FGplayoffs)
+    
     return FGplayoffs
 
 
@@ -173,7 +172,6 @@ def Regular3pointfg(playerID):
     regularDFBron = regularSeasonTotalsDataSet.get_data_frame()
     regularFGBron = regularDFBron['FG3_PCT']
     threeFGregularSeason = regularFGBron.item()
-    print (threeFGregularSeason)
 
     return threeFGregularSeason
 
@@ -186,7 +184,7 @@ def Playoffs3pointfg(playerID):
     playoffsDFBron = playoffsTotalsDataSet.get_data_frame()
     playoffsFGBron = playoffsDFBron['FG3_PCT']
     threeFGplayoffs = playoffsFGBron.item()
-    print (threeFGplayoffs)
+    
     return threeFGplayoffs
 
 
@@ -202,7 +200,7 @@ def RegularFreeThrow(playerID):
     regularDFBron = regularSeasonTotalsDataSet.get_data_frame()
     regularFGBron = regularDFBron['FT_PCT']
     threeFGregularSeason = regularFGBron.item()
-    print (threeFGregularSeason)
+    
 
     return threeFGregularSeason
 
@@ -215,7 +213,7 @@ def PlayoffsFreeThrow(playerID):
     playoffsDFBron = playoffsTotalsDataSet.get_data_frame()
     playoffsFGBron = playoffsDFBron['FT_PCT']
     threeFGplayoffs = playoffsFGBron.item()
-    print (threeFGplayoffs)
+    
     return threeFGplayoffs
 
 
@@ -248,7 +246,7 @@ def regularTotalPoints(playerID):
     playoffsDFBron = playoffsTotalsDataSet.get_data_frame()
     playoffsFGBron = playoffsDFBron['PTS']
     threeFGplayoffs = playoffsFGBron.item()
-    print (threeFGplayoffs)
+    
     return threeFGplayoffs
 
 
@@ -259,7 +257,7 @@ def playoffsTotalPoints(playerID):
     playoffsDFBron = playoffsTotalsDataSet.get_data_frame()
     playoffsFGBron = playoffsDFBron['PTS']
     threeFGplayoffs = playoffsFGBron.item()
-    print (threeFGplayoffs)
+
 
     return threeFGplayoffs
 
@@ -273,7 +271,7 @@ def regularTotalAssists(playerID):
     playoffsDFBron = playoffsTotalsDataSet.get_data_frame()
     playoffsFGBron = playoffsDFBron['AST']
     threeFGplayoffs = playoffsFGBron.item()
-    print (threeFGplayoffs)
+ 
     return threeFGplayoffs
 
 
@@ -284,7 +282,7 @@ def playoffsTotalAssists(playerID):
     playoffsDFBron = playoffsTotalsDataSet.get_data_frame()
     playoffsFGBron = playoffsDFBron['AST']
     threeFGplayoffs = playoffsFGBron.item()
-    print (threeFGplayoffs)
+    
 
     return threeFGplayoffs
 
@@ -296,7 +294,7 @@ def regularTotalRebounds(playerID):
     playoffsDFBron = playoffsTotalsDataSet.get_data_frame()
     playoffsFGBron = playoffsDFBron['REB']
     threeFGplayoffs = playoffsFGBron.item()
-    print (threeFGplayoffs)
+  
     return threeFGplayoffs
 
 
@@ -307,7 +305,7 @@ def playoffsTotalRebounds(playerID):
     playoffsDFBron = playoffsTotalsDataSet.get_data_frame()
     playoffsFGBron = playoffsDFBron['REB']
     threeFGplayoffs = playoffsFGBron.item()
-    print (threeFGplayoffs)
+  
 
     return threeFGplayoffs
 
@@ -319,18 +317,21 @@ def regularTotalTurnovers(playerID):
     playoffsDFBron = playoffsTotalsDataSet.get_data_frame()
     playoffsFGBron = playoffsDFBron['TOV']
     threeFGplayoffs = playoffsFGBron.item()
-    print (threeFGplayoffs)
+    print(threeFGplayoffs)
+    
     return threeFGplayoffs
 
 
 def playoffsTotalTurnovers(playerID):
     careerStats = playercareerstats.PlayerCareerStats(player_id = playerID)
     career_stats_data = careerStats.get_data_frames()[0]
+
     playoffsTotalsDataSet = careerStats.career_totals_post_season
     playoffsDFBron = playoffsTotalsDataSet.get_data_frame()
+
     playoffsFGBron = playoffsDFBron['TOV']
     threeFGplayoffs = playoffsFGBron.item()
-    print (threeFGplayoffs)
+   
 
     return threeFGplayoffs
 
@@ -347,7 +348,7 @@ def regularTotalBlocks(playerID):
     playoffsDFBron = playoffsTotalsDataSet.get_data_frame()
     playoffsFGBron = playoffsDFBron['BLK']
     threeFGplayoffs = playoffsFGBron.item()
-    print (threeFGplayoffs)
+   
     return threeFGplayoffs
 
 
@@ -358,7 +359,6 @@ def playoffsTotalBlocks(playerID):
     playoffsDFBron = playoffsTotalsDataSet.get_data_frame()
     playoffsFGBron = playoffsDFBron['BLK']
     threeFGplayoffs = playoffsFGBron.item()
-    print (threeFGplayoffs)
 
     return threeFGplayoffs
 
@@ -371,7 +371,7 @@ def regularTotalSteals(playerID):
     playoffsDFBron = playoffsTotalsDataSet.get_data_frame()
     playoffsFGBron = playoffsDFBron['STL']
     threeFGplayoffs = playoffsFGBron.item()
-    print (threeFGplayoffs)
+    
     return threeFGplayoffs
 
 
@@ -382,7 +382,7 @@ def playoffsTotalSteals(playerID):
     playoffsDFBron = playoffsTotalsDataSet.get_data_frame()
     playoffsFGBron = playoffsDFBron['STL']
     threeFGplayoffs = playoffsFGBron.item()
-    print (threeFGplayoffs)
+  
 
     return threeFGplayoffs
 
@@ -395,7 +395,7 @@ def regularTotalMinutes(playerID):
     playoffsDFBron = playoffsTotalsDataSet.get_data_frame()
     playoffsFGBron = playoffsDFBron['MIN']
     threeFGplayoffs = playoffsFGBron.item()
-    print (threeFGplayoffs)
+    
     return threeFGplayoffs
 
 
@@ -406,6 +406,5 @@ def playoffsTotalMinutes(playerID):
     playoffsDFBron = playoffsTotalsDataSet.get_data_frame()
     playoffsFGBron = playoffsDFBron['MIN']
     threeFGplayoffs = playoffsFGBron.item()
-    print (threeFGplayoffs)
 
     return threeFGplayoffs

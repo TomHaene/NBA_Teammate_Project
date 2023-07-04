@@ -23,7 +23,7 @@ def returnResults(request):
    
     if request.method == "POST":
         nbaPlayerName = request.POST.get("PlayerName")
-        print(nbaPlayerName)
+        
         request.session['name'] = nbaPlayerName
 
         # now need to pass this name to the Tom.py file
