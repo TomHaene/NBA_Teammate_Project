@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-import Tom
+import NBA_Logic.Tom as Tom
 
 
 
