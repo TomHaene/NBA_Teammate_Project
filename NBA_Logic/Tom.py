@@ -102,8 +102,6 @@ def getCareerStatsPlayoffs(playerID):
 
 
 
-
-
 def RegularSeasonGamesPlayed(playerID):
     getCareerStatsRegularSeason(playerID=playerID)
     regularFGBron = careerStatsRegularDF['GP']
@@ -125,6 +123,7 @@ def PlayoffGamesPlayed(playerID):
 
 
 def RegularFG(playerID):
+    getCareerStatsRegularSeason(playerID=playerID)
     regularFGBron = careerStatsRegularDF['FG_PCT']
     FGregularSeason = regularFGBron.item()
   
@@ -132,6 +131,7 @@ def RegularFG(playerID):
 
 
 def PlayoffsFG(playerID):
+    getCareerStatsPlayoffs(playerID=playerID)
     playoffsFGBron = careerStatsPlayoffsDF['FG_PCT']
     FGplayoffs = playoffsFGBron.item()
     
