@@ -16,7 +16,6 @@ def getAllPlayersList():
     global nba_players_df
     all_players_dict = players.get_players()
     nba_players_df = pd.DataFrame(all_players_dict)
-
     firstLast_df = nba_players_df['full_name']
     firstLast_list = firstLast_df.tolist()
     return firstLast_list
@@ -25,7 +24,11 @@ def getAllPlayersList():
 def setup(name):
   
     playerName = name.title()
-  
+    global all_player_dict
+    global nba_players_df
+    all_players_dict = players.get_players()
+    nba_players_df = pd.DataFrame(all_players_dict)
+
 
     if(playerName == "Lebron James"):
         playerName = "LeBron James"

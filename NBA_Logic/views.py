@@ -3,14 +3,7 @@ from django.http import HttpResponse
 import NBA_Logic.Tom as Tom
 
 
-
-
-
-
 # Create your views here.
-
-
-
 
 
 def index(request):
