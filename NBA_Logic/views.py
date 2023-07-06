@@ -155,9 +155,9 @@ def testing(request):
     
      
         if (ID != "invalid"):
-            # reggames = Tom.RegularSeasonGamesPlayed(ID)
-            # playoffgames = Tom.PlayoffGamesPlayed(ID)
-            return render(request,"results.html" ,{'name':nbaPlayerName})
+            reggames = Tom.RegularSeasonGamesPlayed(ID)
+            playoffgames = Tom.PlayoffGamesPlayed(ID)
+            return render(request,"results.html" ,{'name':nbaPlayerName, 'reggames': reggames, 'playoffgames': playoffgames})
 
 
     
