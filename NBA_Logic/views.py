@@ -161,6 +161,14 @@ def testing(request):
 
         # now need to pass this name to the Tom.py file
         ID = Tom.setup(nbaPlayerName)
-        return render(request,"results.html" ,{'name':nbaPlayerName})
+    
+     
+        if (ID != "invalid"):
+            reggames = Tom.RegularSeasonGamesPlayed(ID)
+            playoffgames = Tom.PlayoffGamesPlayed(ID)
+            
+
+            return render(request,"results.html" ,{'name':nbaPlayerName,'reggames':reggames, 'playoffgames':playoffgames })
+
 
     
