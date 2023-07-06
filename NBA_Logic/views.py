@@ -141,9 +141,9 @@ def returnResults(request):
 
 
 def goBack(request):
-    allplayers = Tom.getAllPlayersList()
+    #allplayers = Tom.getAllPlayersList()
 
-    return render(request,"index.html", {'allplayers': allplayers})
+    return render(request,"index.html")
 
 
 
