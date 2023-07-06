@@ -134,10 +134,6 @@ def returnResults(request):
 
 
 
-
-         
-
-
         # return the data from the business logic and then display this on the SAME HTML page as the input bar,
         # but in a section below it. Also it will bring the user down to this section with a smooth animation
 
@@ -164,17 +160,9 @@ def testing(request):
     
      
         if (ID != "invalid"):
-
-            # regularSeasonFG = Tom.RegularFG(ID)
-            # playoffsFG = Tom.PlayoffsFG(ID)
-
-            # data = {
-            # 'regfg': regularSeasonFG,
-            # 'playoffsfg': playoffsFG
-            # }
-
-
-            return render(request,"results.html" ,{'name':nbaPlayerName})
+            reggames = Tom.RegularSeasonGamesPlayed(ID)
+            playoffgames = Tom.PlayoffGamesPlayed(ID)
+            return render(request,"results.html" ,{'name':nbaPlayerName, 'reggames' : reggames, 'playoffgames': playoffgames})
 
 
     
