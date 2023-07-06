@@ -14,9 +14,9 @@ import NBA_Logic.Tom as Tom
 
 
 def index(request):
-    allplayers = Tom.getAllPlayersList()
+    #allplayers = Tom.getAllPlayersList()
 
-    return render(request,"index.html", {'allplayers': allplayers})
+    return render(request,"index.html")
 
 
 def returnResults(request):
@@ -128,9 +128,9 @@ def returnResults(request):
             return render(request, "results.html", {'name':nbaPlayerName, 'data':data, 'reggames':reggames, 'playoffgames':playoffgames})
 
         #Now handle if the name is not a valid nba player eg: Tom Haene
-        allplayers = Tom.getAllPlayersList()
+       #allplayers = Tom.getAllPlayersList()
 
-        return render(request,"index.html", {'allplayers': allplayers})
+        return render(request,"index.html")
 
 
 
