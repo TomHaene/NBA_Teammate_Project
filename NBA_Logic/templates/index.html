@@ -129,7 +129,7 @@
 
     </div>
 
-    <!-- <span id="allplayers" data-value="{{ allplayers }}" style="display: none;"></span>  -->
+    <span id="allplayers" data-value="{{ allplayers }}" style="display: none;"></span> 
   
   
 
@@ -137,35 +137,33 @@
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
     <script>
-
-  
+      
+      const names = document.getElementById('allplayers').getAttribute('data-value');
     
-      // const names = document.getElementById('allplayers').getAttribute('data-value');
+      $(function() {
+        const playerNames = names.split(',').map(name => name.replace(/'/g, '').trim());
+        playerNames.shift();
+        playerNames.pop();
+        playerNames.unshift('Alaa Abdelnaby');
+        playerNames.push('Matt Zunic');
     
-      // $(function() {
-      //   const playerNames = names.split(',').map(name => name.replace(/'/g, '').trim());
-      //   playerNames.shift();
-      //   playerNames.pop();
-      //   playerNames.unshift('Alaa Abdelnaby');
-      //   playerNames.push('Matt Zunic');
+        $("#player-input").autocomplete({
+          source: function(request, response) {
+            const term = request.term.toLowerCase();
+            const suggestions = playerNames.filter(name =>
+              name.toLowerCase().startsWith(term) // Filter names that start with the input term
+            );
+            const visibleSuggestions = suggestions.slice(0, 10); // Adjust the number of visible suggestions as needed
+            response(visibleSuggestions);
+          },
+          minLength: 0,
+          maxResults: 5
+        }).autocomplete("widget").addClass("overflow-auto");
     
-      //   $("#player-input").autocomplete({
-      //     source: function(request, response) {
-      //       const term = request.term.toLowerCase();
-      //       const suggestions = playerNames.filter(name =>
-      //         name.toLowerCase().startsWith(term) // Filter names that start with the input term
-      //       );
-      //       const visibleSuggestions = suggestions.slice(0, 10); // Adjust the number of visible suggestions as needed
-      //       response(visibleSuggestions);
-      //     },
-      //     minLength: 0,
-      //     maxResults: 5
-      //   }).autocomplete("widget").addClass("overflow-auto");
-    
-      //   $("#player-input").on("click", function() {
-      //     $(this).autocomplete("search");
-      //   });
-      // });
+        $("#player-input").on("click", function() {
+          $(this).autocomplete("search");
+        });
+      });
     </script>
     
 

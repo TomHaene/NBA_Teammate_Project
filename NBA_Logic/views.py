@@ -7,9 +7,9 @@ import NBA_Logic.Tom as Tom
 
 
 def index(request):
-    #allplayers = Tom.getAllPlayersList()
+    allplayers = Tom.getAllPlayersList()
 
-    return render(request,"index.html")
+    return render(request,"index.html",{ "allplayers": allplayers})
 
 
 
@@ -136,9 +136,9 @@ def returnResults(request):
 
 
 def goBack(request):
-    #allplayers = Tom.getAllPlayersList()
+    allplayers = Tom.getAllPlayersList()
 
-    return render(request,"index.html")
+    return render(request,"index.html",{ "allplayers": allplayers})
 
 
 
@@ -157,7 +157,7 @@ def testing(request):
         if (ID != "invalid"):
             reggames = Tom.RegularSeasonGamesPlayed(ID)
             playoffgames = Tom.PlayoffGamesPlayed(ID)
-            return render(request,"results.html" ,{'name':nbaPlayerName, 'reggames': reggames, 'playoffgames': playoffgames})
+            return render(request,"results.html" ,{'name':nbaPlayerName})
 
 
     
