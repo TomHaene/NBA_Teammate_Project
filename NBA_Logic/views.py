@@ -165,13 +165,13 @@ def testing(request):
      
         if (ID != "invalid"):
 
-            regularSeasonFG = Tom.RegularFG(ID)
-            playoffsFG = Tom.PlayoffsFG(ID)
+            # regularSeasonFG = Tom.RegularFG(ID)
+            # playoffsFG = Tom.PlayoffsFG(ID)
 
-            data = {
-            'regfg': regularSeasonFG,
-            'playoffsfg': playoffsFG
-            }
+            # data = {
+            # 'regfg': regularSeasonFG,
+            # 'playoffsfg': playoffsFG
+            # }
 
 
             return render(request,"results.html" ,{'name':nbaPlayerName})
