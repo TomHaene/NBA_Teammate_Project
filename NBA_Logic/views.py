@@ -174,7 +174,7 @@ def testing(request):
             }
 
 
-            return render(request,"results.html" ,{'name':nbaPlayerName, 'data':data})
+            return render(request,"results.html" ,{'name':nbaPlayerName})
 
 
     
