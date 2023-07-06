@@ -154,5 +154,13 @@ def goBack(request):
 
 
 def testing(request):
+     if request.method == "POST":
+        nbaPlayerName = request.POST.get("PlayerName")
+        
+        request.session['name'] = nbaPlayerName
 
-    return render(request,"results.html" )
+        # now need to pass this name to the Tom.py file
+        ID = Tom.setup(nbaPlayerName)
+        return render(request,"results.html" ,{'name':nbaPlayerName})
+
+    

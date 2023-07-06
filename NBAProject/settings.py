@@ -28,9 +28,9 @@ DEBUG = False
 
 ALLOWED_HOSTS = [ 
     '173.255.232.168'
+    
 
 ]
- 
 
 # Application definition
 
