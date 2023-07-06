@@ -205,7 +205,7 @@
 
       <span id="regapg" data-value="{{ data.regapg }}" style="display: none;"></span>
       <span id="playoffsapg" data-value="{{ data.playoffsapg }}" style="display: none;"></span>
-
+<!-- 
       <span id="regrpg" data-value="{{ data.regrpg }}" style="display: none;"></span>
       <span id="playoffsrpg" data-value="{{ data.playoffsrpg }}" style="display: none;"></span>
 
@@ -216,7 +216,7 @@
       <span id="playoffsbpg" data-value="{{ data.playoffsbpg }}" style="display: none;"></span>
 
       <span id="regspg" data-value="{{ data.regspg }}" style="display: none;"></span>
-      <span id="playoffsspg" data-value="{{ data.playoffsspg }}" style="display: none;"></span>
+      <span id="playoffsspg" data-value="{{ data.playoffsspg }}" style="display: none;"></span> -->
 
       <span id="regmpg" data-value="{{ data.regmpg }}" style="display: none;"></span>
       <span id="playoffsmpg" data-value="{{ data.playoffsmpg }}" style="display: none;"></span>
@@ -250,20 +250,20 @@
       const regAPG = document.getElementById('regapg').getAttribute('data-value');
       const playoffsAPG = document.getElementById('playoffsapg').getAttribute('data-value');
 
-      const regRPG = document.getElementById('regrpg').getAttribute('data-value');
-      const playoffsRPG = document.getElementById('playoffsrpg').getAttribute('data-value');
+      // const regRPG = document.getElementById('regrpg').getAttribute('data-value');
+      // const playoffsRPG = document.getElementById('playoffsrpg').getAttribute('data-value');
 
 
-      const regTPG = document.getElementById('regtpg').getAttribute('data-value');
-      const playoffsTPG = document.getElementById('playoffstpg').getAttribute('data-value');
-
-      
-      const regBPG = document.getElementById('regbpg').getAttribute('data-value');
-      const playoffsBPG = document.getElementById('playoffsbpg').getAttribute('data-value');
+      // const regTPG = document.getElementById('regtpg').getAttribute('data-value');
+      // const playoffsTPG = document.getElementById('playoffstpg').getAttribute('data-value');
 
       
-      const regSPG = document.getElementById('regspg').getAttribute('data-value');
-      const playoffsSPG = document.getElementById('playoffsspg').getAttribute('data-value');
+      // const regBPG = document.getElementById('regbpg').getAttribute('data-value');
+      // const playoffsBPG = document.getElementById('playoffsbpg').getAttribute('data-value');
+
+      
+      // const regSPG = document.getElementById('regspg').getAttribute('data-value');
+      // const playoffsSPG = document.getElementById('playoffsspg').getAttribute('data-value');
 
     
       const regMPG = document.getElementById('regmpg').getAttribute('data-value');
@@ -319,7 +319,7 @@
           datasets: [
             {
             label: 'Regular season',
-            data: [regPPG, regAPG, regRPG],
+            data: [regPPG, regAPG],
             backgroundColor: [
             '#A04B74', '#A04B74', '#A04B74',  '#A04B74',  '#A04B74', '#A04B74'
             
@@ -329,7 +329,7 @@
           },
           {
             label: 'Playoffs',
-            data: [playoffsPPG, playoffsAPG, playoffsRPG],
+            data: [playoffsPPG, playoffsAPG],
             backgroundColor: [
             
             '#9F51C4 ', '#9F51C4 ', '#9F51C4 ', '#9F51C4 ', '#9F51C4 ', '#A04B74'
@@ -353,47 +353,47 @@
           }
         }
       });
-      new Chart(ctx3, {
-        type: 'bar',
-        data: {
-          labels: ['Blocks per game', 'Steals per game', 'Turnovers per game'],
-          datasets: [
-            {
-            label: 'Regular season',
-            data: [regBPG, regSPG, regTPG],
-            backgroundColor: [
-            '#A04B74', '#A04B74', '#A04B74'
+      // new Chart(ctx3, {
+      //   type: 'bar',
+      //   data: {
+      //     labels: ['Blocks per game', 'Steals per game', 'Turnovers per game'],
+      //     datasets: [
+      //       {
+      //       label: 'Regular season',
+      //       data: [regBPG, regSPG, regTPG],
+      //       backgroundColor: [
+      //       '#A04B74', '#A04B74', '#A04B74'
               
 
-            ],
-            borderWidth: 1
-          },
-          {
-            label: 'Playoffs',
-            data: [playoffsBPG, playoffsSPG, playoffsTPG],
-            backgroundColor: [
+      //       ],
+      //       borderWidth: 1
+      //     },
+      //     {
+      //       label: 'Playoffs',
+      //       data: [playoffsBPG, playoffsSPG, playoffsTPG],
+      //       backgroundColor: [
             
-             '#9F51C4', '#9F51C4', '#9F51C4'
+      //        '#9F51C4', '#9F51C4', '#9F51C4'
 
 
 
-            ],
-            borderWidth: 1
-          },
+      //       ],
+      //       borderWidth: 1
+      //     },
         
         
         
-        ]
-        },
-        options: {
-          responsive: true,
-          scales: {
-            y: {
-              beginAtZero: true
-            }
-          }
-        }
-      });
+      //   ]
+      //   },
+      //   options: {
+      //     responsive: true,
+      //     scales: {
+      //       y: {
+      //         beginAtZero: true
+      //       }
+      //     }
+      //   }
+      // });
 
       new Chart(ctx4, {
         type: 'bar',

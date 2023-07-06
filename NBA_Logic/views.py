@@ -81,17 +81,17 @@ def returnResults(request):
                 regularAPG = regularTotalAssists / reggames
                 playoffsAPG = playoffTotalAssists / playoffgames
 
-                regularRPG = regularTotalRebounds / reggames
-                playoffsRPG = playoffTotalRebounds / playoffgames
+                #regularRPG = regularTotalRebounds / reggames
+                #playoffsRPG = playoffTotalRebounds / playoffgames
 
-                regularTPG = regularTotalTurnovers / reggames
-                playoffsTPG = playoffTotalTurnovers / playoffgames
+                #regularTPG = regularTotalTurnovers / reggames
+                #playoffsTPG = playoffTotalTurnovers / playoffgames
 
-                regularBPG = regularTotalBlocks / reggames
-                playoffsBPG = playoffTotalBlocks / playoffgames
+               # regularBPG = regularTotalBlocks / reggames
+                #playoffsBPG = playoffTotalBlocks / playoffgames
 
-                regularSPG = regularTotalSteals / reggames
-                playoffsSPG = playoffTotalSteals/ playoffgames
+                #regularSPG = regularTotalSteals / reggames
+                #playoffsSPG = playoffTotalSteals/ playoffgames
 
                 regularMPG = regularTotalMinutes / reggames
                 playoffsMPG = playoffTotalMinutes / playoffgames
@@ -113,14 +113,14 @@ def returnResults(request):
             'playoffsppg':playoffsPPG,
             'regapg' : regularAPG,
             'playoffsapg': playoffsAPG,
-            'regrpg' : regularRPG,
-            'playoffsrpg': playoffsRPG,
-            'regtpg' : regularTPG,
-            'playoffstpg' : playoffsTPG,
-            'regbpg' : regularBPG,
-            'playoffsbpg': playoffsBPG,
-            'regspg' : regularSPG,
-            'playoffsspg' : playoffsSPG,
+            #'regrpg' : regularRPG,
+            #'playoffsrpg': playoffsRPG,
+            #'regtpg' : regularTPG,
+            #'playoffstpg' : playoffsTPG,
+            #'regbpg' : regularBPG,
+            #'playoffsbpg': playoffsBPG,
+            #'regspg' : regularSPG,
+            #'playoffsspg' : playoffsSPG,
             'regmpg' : regularMPG,
             'playoffsmpg': playoffsMPG
 
@@ -141,7 +141,7 @@ def returnResults(request):
         # return the data from the business logic and then display this on the SAME HTML page as the input bar,
         # but in a section below it. Also it will bring the user down to this section with a smooth animation
 
-    return render(request, "results.html", {'name':"Invalid player"})
+    return render(request, "results.html")
 
 
 def goBack(request):
