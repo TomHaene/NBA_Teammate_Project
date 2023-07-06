@@ -36,7 +36,13 @@
 
     <div class="main">
 
-      <div class="results-header"> comparison data for {{ name }}:</div>
+      <div class="results-header"> comparison data for {{ name }}:
+
+        {{ data.regfg }}
+        {{ data.playoffsfg }}
+
+        
+      </div>
 
 
       <div class="games-played">
@@ -189,10 +195,10 @@
 
       </div>
 
-
+<!--
       <span id="regfg" data-value="{{ data.regfg }}" style="display: none;"></span>
       <span id="playoffsfg" data-value="{{ data.playoffsfg }}" style="display: none;"></span>
-<!-- 
+
 
       <span id="reg3fg" data-value="{{ data.reg3fg }}" style="display: none;"></span>
       <span id="playoffs3fg" data-value="{{ data.playoffs3fg }}" style="display: none;"></span>
@@ -235,8 +241,8 @@
       const ctx4 = document.getElementById('minutesChart');
       
 
-      const regfg = document.getElementById('regfg').getAttribute('data-value');
-      const playoffsfg = document.getElementById('playoffsfg').getAttribute('data-value');
+      // const regfg = document.getElementById('regfg').getAttribute('data-value');
+      // const playoffsfg = document.getElementById('playoffsfg').getAttribute('data-value');
 
       // const reg3fg = document.getElementById('reg3fg').getAttribute('data-value');
       // const playoffs3fg = document.getElementById('playoffs3fg').getAttribute('data-value');
@@ -269,45 +275,45 @@
       // const regMPG = document.getElementById('regmpg').getAttribute('data-value');
       // const playoffsMPG = document.getElementById('playoffsmpg').getAttribute('data-value');
 
-      new Chart(ctx1, {
-        type: 'bar',
-        data: {
-          labels: ['Field goal %'],
-          datasets: [
-            {
-            label: 'Regular season',
-            data: [regfg],
-            backgroundColor: [
-            '#A04B74'
+      // new Chart(ctx1, {
+      //   type: 'bar',
+      //   data: {
+      //     labels: ['Field goal %'],
+      //     datasets: [
+      //       {
+      //       label: 'Regular season',
+      //       data: [regfg],
+      //       backgroundColor: [
+      //       '#A04B74'
             
 
-            ],
-            borderWidth: 1
-          },
-          {
-            label: 'Playoffs',
-            data: [playoffsfg],
-            backgroundColor: [
+      //       ],
+      //       borderWidth: 1
+      //     },
+      //     {
+      //       label: 'Playoffs',
+      //       data: [playoffsfg],
+      //       backgroundColor: [
             
-            '#9F51C4'
+      //       '#9F51C4'
 
-            ],
-            borderWidth: 1
-          },
+      //       ],
+      //       borderWidth: 1
+      //     },
         
         
         
-        ]
-        },
-        options: {
-          responsive: true,
-          scales: {
-            y: {
-              beginAtZero: true
-            }
-          }
-        }
-      });
+      //   ]
+      //   },
+      //   options: {
+      //     responsive: true,
+      //     scales: {
+      //       y: {
+      //         beginAtZero: true
+      //       }
+      //     }
+      //   }
+      // });
       // new Chart(ctx2, {
       //   type: 'bar',
       //   data: {
