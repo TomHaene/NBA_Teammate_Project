@@ -189,7 +189,7 @@
 
       </div>
 
-
+<!-- 
       <span id="regfg" data-value="{{ data.regfg }}" style="display: none;"></span>
       <span id="playoffsfg" data-value="{{ data.playoffsfg }}" style="display: none;"></span>
 
@@ -204,7 +204,7 @@
       <span id="playoffsppg" data-value="{{ data.playoffsppg }}" style="display: none;"></span>
 
       <span id="regapg" data-value="{{ data.regapg }}" style="display: none;"></span>
-      <span id="playoffsapg" data-value="{{ data.playoffsapg }}" style="display: none;"></span>
+      <span id="playoffsapg" data-value="{{ data.playoffsapg }}" style="display: none;"></span> -->
 <!-- 
       <span id="regrpg" data-value="{{ data.regrpg }}" style="display: none;"></span>
       <span id="playoffsrpg" data-value="{{ data.playoffsrpg }}" style="display: none;"></span>
@@ -217,9 +217,9 @@
 
       <span id="regspg" data-value="{{ data.regspg }}" style="display: none;"></span>
       <span id="playoffsspg" data-value="{{ data.playoffsspg }}" style="display: none;"></span> -->
-
+<!-- 
       <span id="regmpg" data-value="{{ data.regmpg }}" style="display: none;"></span>
-      <span id="playoffsmpg" data-value="{{ data.playoffsmpg }}" style="display: none;"></span>
+      <span id="playoffsmpg" data-value="{{ data.playoffsmpg }}" style="display: none;"></span> -->
 
       
   
@@ -235,20 +235,20 @@
       const ctx4 = document.getElementById('minutesChart');
       
 
-      const regfg = document.getElementById('regfg').getAttribute('data-value');
-      const playoffsfg = document.getElementById('playoffsfg').getAttribute('data-value');
+      // const regfg = document.getElementById('regfg').getAttribute('data-value');
+      // const playoffsfg = document.getElementById('playoffsfg').getAttribute('data-value');
 
-      const reg3fg = document.getElementById('reg3fg').getAttribute('data-value');
-      const playoffs3fg = document.getElementById('playoffs3fg').getAttribute('data-value');
+      // const reg3fg = document.getElementById('reg3fg').getAttribute('data-value');
+      // const playoffs3fg = document.getElementById('playoffs3fg').getAttribute('data-value');
 
-      const regfreethrow = document.getElementById('regfreethrow').getAttribute('data-value');
-      const playoffsfreethrow = document.getElementById('playoffsfreethrow').getAttribute('data-value');
+      // const regfreethrow = document.getElementById('regfreethrow').getAttribute('data-value');
+      // const playoffsfreethrow = document.getElementById('playoffsfreethrow').getAttribute('data-value');
 
-      const regPPG = document.getElementById('regppg').getAttribute('data-value');
-      const playoffsPPG = document.getElementById('playoffsppg').getAttribute('data-value');
+      // const regPPG = document.getElementById('regppg').getAttribute('data-value');
+      // const playoffsPPG = document.getElementById('playoffsppg').getAttribute('data-value');
 
-      const regAPG = document.getElementById('regapg').getAttribute('data-value');
-      const playoffsAPG = document.getElementById('playoffsapg').getAttribute('data-value');
+      // const regAPG = document.getElementById('regapg').getAttribute('data-value');
+      // const playoffsAPG = document.getElementById('playoffsapg').getAttribute('data-value');
 
       // const regRPG = document.getElementById('regrpg').getAttribute('data-value');
       // const playoffsRPG = document.getElementById('playoffsrpg').getAttribute('data-value');
@@ -266,93 +266,93 @@
       // const playoffsSPG = document.getElementById('playoffsspg').getAttribute('data-value');
 
     
-      const regMPG = document.getElementById('regmpg').getAttribute('data-value');
-      const playoffsMPG = document.getElementById('playoffsmpg').getAttribute('data-value');
+      // const regMPG = document.getElementById('regmpg').getAttribute('data-value');
+      // const playoffsMPG = document.getElementById('playoffsmpg').getAttribute('data-value');
 
-      new Chart(ctx1, {
-        type: 'bar',
-        data: {
-          labels: ['Field goal %', '3 point %', 'Free throw %'],
-          datasets: [
-            {
-            label: 'Regular season',
-            data: [regfg, reg3fg, regfreethrow],
-            backgroundColor: [
-            '#A04B74', '#A04B74', '#A04B74'
+      // new Chart(ctx1, {
+      //   type: 'bar',
+      //   data: {
+      //     labels: ['Field goal %', '3 point %', 'Free throw %'],
+      //     datasets: [
+      //       {
+      //       label: 'Regular season',
+      //       data: [regfg, reg3fg, regfreethrow],
+      //       backgroundColor: [
+      //       '#A04B74', '#A04B74', '#A04B74'
               
 
 
 
-            ],
-            borderWidth: 1
-          },
-          {
-            label: 'Playoffs',
-            data: [playoffsfg, playoffs3fg, playoffsfreethrow],
-            backgroundColor: [
+      //       ],
+      //       borderWidth: 1
+      //     },
+      //     {
+      //       label: 'Playoffs',
+      //       data: [playoffsfg, playoffs3fg, playoffsfreethrow],
+      //       backgroundColor: [
             
-            '#9F51C4', '#9F51C4 ', '#9F51C4 '
+      //       '#9F51C4', '#9F51C4 ', '#9F51C4 '
 
 
 
-            ],
-            borderWidth: 1
-          },
+      //       ],
+      //       borderWidth: 1
+      //     },
         
         
         
-        ]
-        },
-        options: {
-          responsive: true,
-          scales: {
-            y: {
-              beginAtZero: true
-            }
-          }
-        }
-      });
-      new Chart(ctx2, {
-        type: 'bar',
-        data: {
-          labels: ['Points per game', 'Assists per game','Rebounds per game'],
-          datasets: [
-            {
-            label: 'Regular season',
-            data: [regPPG, regAPG],
-            backgroundColor: [
-            '#A04B74', '#A04B74', '#A04B74',  '#A04B74',  '#A04B74', '#A04B74'
+      //   ]
+      //   },
+      //   options: {
+      //     responsive: true,
+      //     scales: {
+      //       y: {
+      //         beginAtZero: true
+      //       }
+      //     }
+      //   }
+      // });
+      // new Chart(ctx2, {
+      //   type: 'bar',
+      //   data: {
+      //     labels: ['Points per game', 'Assists per game','Rebounds per game'],
+      //     datasets: [
+      //       {
+      //       label: 'Regular season',
+      //       data: [regPPG, regAPG],
+      //       backgroundColor: [
+      //       '#A04B74', '#A04B74', '#A04B74',  '#A04B74',  '#A04B74', '#A04B74'
             
 
-            ],
-            borderWidth: 1
-          },
-          {
-            label: 'Playoffs',
-            data: [playoffsPPG, playoffsAPG],
-            backgroundColor: [
+      //       ],
+      //       borderWidth: 1
+      //     },
+      //     {
+      //       label: 'Playoffs',
+      //       data: [playoffsPPG, playoffsAPG],
+      //       backgroundColor: [
             
-            '#9F51C4 ', '#9F51C4 ', '#9F51C4 ', '#9F51C4 ', '#9F51C4 ', '#A04B74'
+      //       '#9F51C4 ', '#9F51C4 ', '#9F51C4 ', '#9F51C4 ', '#9F51C4 ', '#A04B74'
 
 
 
-            ],
-            borderWidth: 1
-          },
+      //       ],
+      //       borderWidth: 1
+      //     },
         
         
         
-        ]
-        },
-        options: {
-          responsive: true,
-          scales: {
-            y: {
-              beginAtZero: true
-            }
-          }
-        }
-      });
+      //   ]
+      //   },
+      //   options: {
+      //     responsive: true,
+      //     scales: {
+      //       y: {
+      //         beginAtZero: true
+      //       }
+      //     }
+      //   }
+      // });
       // new Chart(ctx3, {
       //   type: 'bar',
       //   data: {
@@ -395,46 +395,46 @@
       //   }
       // });
 
-      new Chart(ctx4, {
-        type: 'bar',
-        data: {
-          labels: ['Minutes per game'],
-          datasets: [
-            {
-            label: 'Regular season',
-            data: [regMPG],
-            backgroundColor: [
-            '#A04B74'
+      // new Chart(ctx4, {
+      //   type: 'bar',
+      //   data: {
+      //     labels: ['Minutes per game'],
+      //     datasets: [
+      //       {
+      //       label: 'Regular season',
+      //       data: [regMPG],
+      //       backgroundColor: [
+      //       '#A04B74'
               
 
-            ],
-            borderWidth: 5,
-            barThickness: 90,
-          },
-          {
-            label: 'Playoffs',
-            data: [playoffsMPG],
-            backgroundColor: [
+      //       ],
+      //       borderWidth: 5,
+      //       barThickness: 90,
+      //     },
+      //     {
+      //       label: 'Playoffs',
+      //       data: [playoffsMPG],
+      //       backgroundColor: [
   
-             '#9F51C4'
-            ],
-            borderWidth: 5,
-            barThickness: 90,
-          },
+      //        '#9F51C4'
+      //       ],
+      //       borderWidth: 5,
+      //       barThickness: 90,
+      //     },
         
         
         
-        ]
-        },
-        options: {
-          responsive: true,
-          scales: {
-            y: {
-              beginAtZero: true
-            }
-          }
-        }
-      });
+      //   ]
+      //   },
+      //   options: {
+      //     responsive: true,
+      //     scales: {
+      //       y: {
+      //         beginAtZero: true
+      //       }
+      //     }
+      //   }
+      // });
 
     </script>
   </body>
