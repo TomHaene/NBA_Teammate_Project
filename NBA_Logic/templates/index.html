@@ -106,7 +106,7 @@
             
         </div>
 
-        <form action="{% url 'testing' %}" method="post"> 
+        <form action="{% url 'returnResults' %}" method="post"> 
             {% csrf_token %}
               <input type="text" placeholder="Enter any NBA player....." name="PlayerName" id="player-input" autocomplete="off">
     

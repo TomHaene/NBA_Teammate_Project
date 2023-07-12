@@ -1,13 +1,13 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-import NBA_Logic.Tom as Tom
+import NBA_Logic.thomas as Thomas
 
 
 # Create your views here.
 
 
 def index(request):
-    allplayers = Tom.getAllPlayersList()
+    allplayers = Thomas.getAllPlayersList()
 
     return render(request,"index.html",{ "allplayers": allplayers})
 
@@ -22,49 +22,49 @@ def returnResults(request):
         request.session['name'] = nbaPlayerName
 
         # now need to pass this name to the Tom.py file
-        ID = Tom.setup(nbaPlayerName)
+        ID = Thomas.setup(nbaPlayerName)
 
     
 
 
         if (ID != "invalid"):
-            reggames = Tom.RegularSeasonGamesPlayed(ID)
-            playoffgames = Tom.PlayoffGamesPlayed(ID)
+            reggames = Thomas.RegularSeasonGamesPlayed(ID)
+            playoffgames = Thomas.PlayoffGamesPlayed(ID)
 
             if(playoffgames == 0):
                 # If the player has played zero playoff games, so only has regular season games
                 return render(request,"index.html")
                 
         
-            regularSeasonFG = Tom.RegularFG(ID)
-            playoffsFG = Tom.PlayoffsFG(ID)
+            regularSeasonFG = Thomas.RegularFG(ID)
+            playoffsFG = Thomas.PlayoffsFG(ID)
 
-            regularSeason3pointFG = Tom.Regular3pointfg(ID)
-            playoffs3pointFG = Tom.Playoffs3pointfg(ID)
+            regularSeason3pointFG = Thomas.Regular3PointFG(ID)
+            playoffs3pointFG = Thomas.Playoffs3PointFG(ID)
 
-            regularSeasonFreeThrow = Tom.RegularFreeThrow(ID)
-            playoffsFreeThrow = Tom.PlayoffsFreeThrow(ID)
+            regularSeasonFreeThrow = Thomas.RegularFreeThrow(ID)
+            playoffsFreeThrow = Thomas.PlayoffsFreeThrow(ID)
 
-            regularTotalPoints = Tom.regularTotalPoints(ID)
-            playoffTotalPoints = Tom.playoffsTotalPoints(ID)
+            regularTotalPoints = Thomas.RegularTotalPoints(ID)
+            playoffTotalPoints = Thomas.PlayoffsTotalPoints(ID)
 
-            regularTotalAssists = Tom.regularTotalAssists(ID)
-            playoffTotalAssists = Tom.playoffsTotalAssists(ID)
+            regularTotalAssists = Thomas.RegularAssists(ID)
+            playoffTotalAssists = Thomas.PlayoffsAssists(ID)
 
-            regularTotalRebounds = Tom.regularTotalRebounds(ID)
-            playoffTotalRebounds = Tom.playoffsTotalRebounds(ID)
+            regularTotalRebounds = Thomas.RegularRebounds(ID)
+            playoffTotalRebounds = Thomas.PlayoffsRebounds(ID)
 
-            regularTotalTurnovers = Tom.regularTotalTurnovers(ID)
-            playoffTotalTurnovers = Tom.playoffsTotalTurnovers(ID)
+            regularTotalTurnovers = Thomas.RegularTurnovers(ID)
+            playoffTotalTurnovers = Thomas.PlayoffsTurnovers(ID)
 
-            regularTotalBlocks = Tom.regularTotalBlocks(ID)
-            playoffTotalBlocks = Tom.playoffsTotalBlocks(ID)
+            regularTotalBlocks = Thomas.RegularBlocks(ID)
+            playoffTotalBlocks = Thomas.PlayoffsBlocks(ID)
 
-            regularTotalSteals = Tom.regularTotalSteals(ID)
-            playoffTotalSteals = Tom.playoffsTotalSteals(ID)
+            regularTotalSteals = Thomas.RegularSteals(ID)
+            playoffTotalSteals = Thomas.PlayoffsSteals(ID)
 
-            regularTotalMinutes = Tom.regularTotalMinutes(ID)
-            playoffTotalMinutes = Tom.playoffsTotalMinutes(ID)
+            regularTotalMinutes = Thomas.RegularMinutes(ID)
+            playoffTotalMinutes = Thomas.PlayoffsMinutes(ID)
 
 
 
@@ -123,7 +123,7 @@ def returnResults(request):
             return render(request, "results.html", {'name':nbaPlayerName, 'data':data, 'reggames':reggames, 'playoffgames':playoffgames})
 
         #Now handle if the name is not a valid nba player eg: Tom Haene
-        allplayers = Tom.getAllPlayersList()
+        allplayers = Thomas.getAllPlayersList()
 
         return render(request,"index.html", {'allplayers': allplayers})
 
@@ -136,28 +136,10 @@ def returnResults(request):
 
 
 def goBack(request):
-    allplayers = Tom.getAllPlayersList()
+    allplayers = Thomas.getAllPlayersList()
 
     return render(request,"index.html",{ "allplayers": allplayers})
 
 
 
 
-
-def testing(request):
-     if request.method == "POST":
-        nbaPlayerName = request.POST.get("PlayerName")
-        
-        request.session['name'] = nbaPlayerName
-
-        # now need to pass this name to the Tom.py file
-        ID = Tom.setup(nbaPlayerName)
-    
-     
-        if (ID != "invalid"):
-            reggames = Tom.RegularSeasonGamesPlayed(ID)
-            playoffgames = Tom.PlayoffGamesPlayed(ID)
-            return render(request,"results.html" ,{'name':nbaPlayerName})
-
-
-    

@@ -1,10 +1,8 @@
 #This file will contain the code for the display of the shot data in the regular season and in the playoffs
-from nba_api.stats.endpoints.shotchartdetail import ShotChartDetail
 from nba_api.stats.static import players, teams
 import pandas as pd
-from nba_api.stats.endpoints import playergamelog, teamgamelog, leaguegamefinder, commonplayerinfo, commonallplayers
+from nba_api.stats.endpoints import playergamelog
 from nba_api.stats.library.parameters import SeasonAll
-from nba_api.stats.endpoints import playercareerstats
 
 
 all_players_dict = 0 
@@ -12,7 +10,7 @@ nba_players_df = 0
 
 
 def getAllPlayersList():
-    global all_player_dict
+    global all_players_dict
     global nba_players_df
     all_players_dict = players.get_players()
     nba_players_df = pd.DataFrame(all_players_dict)
@@ -24,7 +22,7 @@ def getAllPlayersList():
 def setup(name):
   
     playerName = name.title()
-    global all_player_dict
+    global all_players_dict
     global nba_players_df
     all_players_dict = players.get_players()
     nba_players_df = pd.DataFrame(all_players_dict)
@@ -78,32 +76,106 @@ def setup(name):
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 careerStatsRegularDF= 0 
 careerStatsPlayoffsDF= 0 
 
 
+
 def getCareerStatsRegularSeason(playerID):
     global careerStatsRegularDF
-    careerStats = playercareerstats.PlayerCareerStats(player_id = playerID)
-    career_stats_data = careerStats.get_data_frames()[0]
-    regularSeasonTotalsDataSet = careerStats.career_totals_regular_season
-    careerStatsDF = regularSeasonTotalsDataSet.get_data_frame()
-    if (careerStatsDF.empty):
-        return 0
-    careerStatsRegularDF = careerStatsDF
-#Now the regularDFBron variable is assigned
-
+    regularSeasonStats = playergamelog.PlayerGameLog(player_id=playerID, season=SeasonAll.default)
+    regularSeasonStats = regularSeasonStats.get_data_frames()[0]
+    careerStatsRegularDF = regularSeasonStats
 
 def getCareerStatsPlayoffs(playerID):
     global careerStatsPlayoffsDF
-    careerStats = playercareerstats.PlayerCareerStats(player_id = playerID)
-    career_stats_data = careerStats.get_data_frames()[0]
-    regularSeasonTotalsDataSet = careerStats.career_totals_post_season
-    careerStatsDF = regularSeasonTotalsDataSet.get_data_frame()
-    if (careerStatsDF.empty):
-        return 0
-    careerStatsPlayoffsDF = careerStatsDF
-#Now the regularDFBron variable is assigned
+    playoffsStats = playergamelog.PlayerGameLog(player_id=playerID, season=SeasonAll.default, season_type_all_star="Playoffs")
+    playoffsStats = playoffsStats.get_data_frames()[0]
+    careerStatsPlayoffsDF = playoffsStats
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -120,16 +192,12 @@ def RegularSeasonGamesPlayed(playerID):
 def PlayoffGamesPlayed(playerID):
     getCareerStatsPlayoffs(playerID=playerID)
     playoffsFGBron = careerStatsPlayoffsDF['GP']
-     
     GPPlayoffs = playoffsFGBron.item()
-
-
     return GPPlayoffs
 
 
 
 def RegularFG(playerID):
-    getCareerStatsRegularSeason(playerID=playerID)
     regularFGBron = careerStatsRegularDF['FG_PCT']
     FGregularSeason = regularFGBron.item()
   
@@ -137,7 +205,6 @@ def RegularFG(playerID):
 
 
 def PlayoffsFG(playerID):
-    getCareerStatsPlayoffs(playerID=playerID)
     playoffsFGBron = careerStatsPlayoffsDF['FG_PCT']
     FGplayoffs = playoffsFGBron.item()
     
