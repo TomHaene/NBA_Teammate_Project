@@ -33,17 +33,14 @@ def setup(name):
     if(playerName == "Lebron James"):
         playerName = "LeBron James"
 
-    if(playerName == "Tracy Mcgrady"):
-        playerName == "Tracy McGrady"   
-
+ 
     if(playerName == "Demar Derozan"):
-        playerName == "DeMar DeRozan"  
+        return (201942) 
 
     if(playerName == "Demarcus Cousins"):
-        playerName == "DeMarcus Cousins"    
+        return(202326)  
 
 
-    
     
     #boom, okay so now we have access to the given player in my algorithm 
     #now do some input validation
