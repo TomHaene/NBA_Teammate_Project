@@ -62,7 +62,6 @@
                     <li> Also note that this program won't work if your player falls in one or more of the following categories:
 
                         <ul>
-                            <li> Retired NBA players</li>
                             <li> NBA players who have not played any playoff games in their career yet, eg: rookies</li>
                             <li>Non-NBA players obviously, so don't even think of trying yourself</li>
                         </ul>
@@ -102,7 +101,7 @@
         
 
         <div class="welcome-subtext">
-            Feel free to enter a current NBA player into the field below
+            Feel free to enter any NBA player into the field below (current or retired)
             
         </div>
 
@@ -179,7 +178,6 @@
     /* outline: 1px solid hotpink;  */
 
 }
-
 
 
 
@@ -344,25 +342,44 @@ height: 80vh;
     
 }
 
+
+
+
 .modal-dialog {
-        width: 80vw; /* Set the desired maximum width for the modal */
-        margin-inline: auto;
+        max-width: 50%; /* Set the desired maximum width for the modal */
+       
     }
 
+.modal-content{
+  width: 100%;
+  position: relative;
+
+}
+.modal-header{
+  margin-inline: auto;
+
+}
+
+
+.modal-header button{
+  position: absolute;
+  right: 12px;
+ 
+}
 
 
 .modal-title {
-    font-size: 3.5rem;
+    font-size: 3rem;
   }
   
 .modal-body{
-    font-size: 2.2rem;
+    font-size: 1.8rem;
+
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 
-.modal-body p{
-    line-height: 21px;
-}
+
 
 @media (max-width: 900px) {
   /* CSS styles for screens below 768 pixels */
@@ -374,16 +391,54 @@ height: 80vh;
 
   }
   .welcome-subtext{
-    font-size: 2.5rem;
+    font-size: 2.8rem;
     width: 60%;
     margin-top: 5px;
   }
 
+
+
+.modal-dialog {
+        max-width: 55%; /* Set the desired maximum width for the modal */
+        min-width: 350px;
+        margin-inline: auto;
+    }
+
+.modal-content{
+  width: 100%;
+  position: relative;
+
+}
+.modal-header{
+  margin-inline: auto;
+
+}
+
+
+.modal-header button{
+  position: absolute;
+  right: 12px;
  
+}
+
+
+.modal-title {
+  font-size: 2.5rem;
+  }
+  
+.modal-body{
+    font-size: 1.4rem;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+
 
 
 
 }
+
+
+  
 
 
 

@@ -107,7 +107,7 @@ def obtainRegularSeasonDataForPlayer(ID):
 
 def obtainPlayoffsDataForPlayer(ID):
     global single_player_playoff_data
-    single_player_playoff_data = all_playoffs_data.loc[all_regular_data['PLAYER_ID'] == ID]
+    single_player_playoff_data = all_playoffs_data.loc[all_playoffs_data['PLAYER_ID'] == ID]
 
 
 
